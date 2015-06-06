@@ -1,0 +1,26 @@
+Revision history for SOAP-WinRM
+
+0.1     Sun Oct 2 2011 Alasdair Keyes <alasdair@alasdairkeyes.me.uk>
+        First release.
+
+0.2	Wed Feb 29 2012 Alasdair Keyes <alasdair@alasdairkeyes.me.uk>
+	- Set Content-Type header to application/soap+xml instead of
+	  relying on SOAP::Lite's soapversion method and setting to 1.2
+	- Add alarm when calling SOAP::Lite::call to catch timeouts,
+	  this generall isn't required, but when ports forwarding is in
+	  place on the host, it seems to be needed, alarm is set to timeout
+	  value +2 seconds.
+	- execute method returns using wantarray to work out whether to
+	  return scalar or array
+	- SOAP responses for "receive stream" and "close" force the
+	  { "rsp:ReceiveResponse" }{ "rsp:CommandState" } part of the hashref
+	  to an ARRAYREF and then pop the result off the end, the earlier
+	  1.1 stack often replies with this as an arrayref so it needs to
+	  be handled accordingly
+	- Remote stack 1.1 supported
+
+0.3	Thu Mar 01 2012 Alasdair Keyes <alasdair@alasdairkeyes.me.uk>
+	- Set Default timeout to 60 seconds same as WinRM default timeout
+	- Set the OperationTimeout Header in the SOAP call to match the
+	  timeout specified by the user
+	- Update documentation with this information
