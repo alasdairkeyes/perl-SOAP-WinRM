@@ -6,7 +6,9 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc SOAP::WinRM
+```
+perldoc SOAP::WinRM
+```
 
 You can also look for information at:
 
